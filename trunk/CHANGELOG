@@ -1,2 +1,7 @@
 * initial import:
-         based on Instiki svn revision 173
+	based on Instiki svn revision 173
+	Refactored chunks and wiki_content.rb 
+	Fixed broken links in edit_web
+	Fixed the "All Pages" link (list.rhtml)
+	railties + actionpack + activesupport : revision 901 + url_for hotfix
+	
