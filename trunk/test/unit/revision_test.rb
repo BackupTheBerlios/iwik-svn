@@ -12,28 +12,38 @@ class RevisionTest < Test::Unit::TestCase
     @web.markup = :textile
 
     @page = @wiki.read_page('wiki1', 'HomePage')
-    ['MyWay', 'SmartEngine', 'ThatWay'].each do |page|
+    
+     ['MyWay', 'SmartEngine', 'ThatWay', 'blah', 'blue'].each do |page|
       @wiki.write_page('wiki1', page, page, Time.now, 'Me')
     end
-    @wiki.write_page('wiki1','NoWikiWord', 'hey you', Time.now, 'Me')
+    @wiki.write_page('wiki1', 'NoWikiWord', 'hey you  [[blah]]', Time.now, 'Me')
 
     @revision = Revision.new(@page, 1,
       'HisWay would be MyWay in kinda ThatWay in HisWay though MyWay \OverThere -- ' +
-          'see SmartEngine in that SmartEngineGUI', 
-      Time.local(2004, 4, 4, 16, 50), 'DavidHeinemeierHansson')
+          'see SmartEngine in that SmartEngineGUI [[!include blah]] but not [[blue]] ' +
+	  'nor [[thiszombiepage]]',
+	   Time.local(2004, 4, 4, 16, 50), 'DavidHeinemeierHansson')
   end
 
-  def test_wiki_words
-    assert_equal %w( HisWay MyWay SmartEngine SmartEngineGUI ThatWay ), @revision.wiki_words.sort
-    assert_equal [], @wiki.read_page('wiki1', 'NoWikiWord').wiki_words
+  def test_wiki_links
+    assert_equal %w( HisWay MyWay SmartEngine SmartEngineGUI ThatWay blue thiszombiepage), @revision.wiki_links.sort
+    assert_equal ['blah'], @wiki.read_page('wiki1', 'NoWikiWord').wiki_links
+  end
+  
+  def test_wiki_references
+    assert_equal %w( HisWay MyWay SmartEngine SmartEngineGUI ThatWay blah blue thiszombiepage), @revision.wiki_references.sort
+  end
+  
+  def test_wiki_includes
+    assert_equal %w( blah ), @revision.wiki_includes.sort
   end
   
   def test_existing_pages
-    assert_equal %w( MyWay SmartEngine ThatWay ), @revision.existing_pages.sort
+    assert_equal %w( MyWay SmartEngine ThatWay blue), @revision.existing_pages.sort
   end
   
   def test_unexisting_pages
-    assert_equal %w( HisWay SmartEngineGUI ), @revision.unexisting_pages.sort
+    assert_equal %w( HisWay SmartEngineGUI thiszombiepage), @revision.unexisting_pages.sort
   end
   
   def test_content_with_wiki_links
@@ -44,7 +54,10 @@ class RevisionTest < Test::Unit::TestCase
         'though <a class="existingWikiWord" href="../show/MyWay">My Way</a> OverThere&#8212;see ' +
         '<a class="existingWikiWord" href="../show/SmartEngine">Smart Engine</a> in that ' +
         '<span class="newWikiWord">Smart Engine GUI' +
-        '<a href="../show/SmartEngineGUI">?</a></span></p>', 
+        '<a href="../show/SmartEngineGUI">?</a></span> blah but not ' + 
+	'<a class="existingWikiWord" href="../show/blue">blue</a> nor ' + 
+	'<span class="newWikiWord">thiszombiepage<a href="../show/thiszombiepage">?</a>' + 
+	'</span></p>', 
         @revision.display_content
   end
 
@@ -172,7 +185,9 @@ class RevisionTest < Test::Unit::TestCase
         '<span class="newWikiWord">His Way</span> though ' +
         '<a class="existingWikiWord" href="MyWay.html">My Way</a> OverThere&#8212;see ' +
         '<a class="existingWikiWord" href="SmartEngine.html">Smart Engine</a> in that ' +
-        '<span class="newWikiWord">Smart Engine GUI</span></p>', 
+        '<span class="newWikiWord">Smart Engine GUI</span> ' + 
+	'blah but not <a class="existingWikiWord" href="blue.html">blue</a> nor ' + 
+	'<span class="newWikiWord">thiszombiepage</span></p>', 
         @revision.display_content_for_export
   end
 
