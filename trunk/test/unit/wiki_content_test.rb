@@ -10,7 +10,7 @@ require 'wiki_content'
 class WikiContentTest < Test::Unit::TestCase
   
   def setup
-    @s = WikiService.instance
+    @s = WikiServiceWithNoPersistence.new
     @s.create_web 'Instiki', 'instiki'
     @web = @s.webs['instiki']
 

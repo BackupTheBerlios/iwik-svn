@@ -1,5 +1,4 @@
 require 'chunks/wiki'
-require 'pp'
 
 # Includes the contents of another page for rendering.
 # The include command looks like this: "[[!include PageName]]".
@@ -21,11 +20,8 @@ class Include < WikiChunk::WikiReference
                        refpage.clear_display_cache
                        # raise Instiki::ValidationError.new("Recursive include detected")
                        "<em>Recursive include detected; #{@page_name} --> #{@content.page_name} --> #{@page_name}</em>\n"
-
                      else 
-		       @content.chunks.each{|c| $stderr.puts c.mask}
                        @content.merge_chunks(refpage.display_content)
-		       @content.chunks.each{|c| $stderr.puts c.mask}
                        refpage.display_content.pre_rendered 
                      end
                    else
