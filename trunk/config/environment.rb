@@ -1,5 +1,5 @@
 if RUBY_VERSION < '1.8.1' 
-  puts 'Instiki requires Ruby 1.8.1+'
+  puts 'Iwik requires Ruby 1.8.1+'
   exit
 end
 
