@@ -3,7 +3,7 @@
 <% unless @categories.empty? %>
 <div id="categories">
   <strong>Categories</strong>: 
-  [<a href=".">Any</a>]
+  <%= link_to_unless_current("[Any]", {:action => 'recently_revised', :web => @web_name} ){} %>
   <%= @category_links.join(', ') %>
 </div>
 <% end %>
