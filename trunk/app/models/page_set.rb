@@ -56,20 +56,24 @@ class PageSet < Array
   # The HomePage and author pages are always assumed to have
   # references and so cannot be orphans
   def orphaned_pages
-    references = web.select.wiki_links + ['HomePage'] + web.select.authors
+    references = web.select.wiki_references + ['HomePage'] + web.select.authors
     self.reject { |page| references.include?(page.name) } 
   end
 
   # Returns all the wiki words in this page set for which
   # there are no pages in this page set's web
   def wanted_pages
-    wiki_links - web.select.names
+    wiki_references - web.select.names
   end
 
   def names
     self.map { |page| page.name }
   end
 
+  def wiki_references
+    self.inject([]) { |wiki_refs, page| wiki_refs << page.wiki_references }.flatten.uniq
+  end
+  
   def wiki_links
     self.inject([]) { |wiki_links, page| wiki_links << page.wiki_links }.flatten.uniq
   end
