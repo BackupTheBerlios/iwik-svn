@@ -11,15 +11,15 @@ end
 <form id="navigationForm" class="navigation" action="../search/" method="get" style="font-size: 10px">  
   
   <% if @action_name != "published" then %>
-    <%= list_item i18n('Home Page'), {:action => 'show', :id => "HomePage"}, "Home, Sweet Home", "H" %> | 
-    <%= list_item i18n('All Pages'), {:action => 'list'}, "Alphabetically sorted list of pages", "A" %> | 
-    <%= list_item i18n('Recently Revised'), {:action =>"recently_revised"}, "Pages sorted by when they were last changed", "U" %> | 
-    <%= list_item i18n('Authors'), {:action => "authors"}, "Who wrote what" %> | 
-    <%= list_item i18n('Feeds'), {:action => "feeds"}, "Subscribe to changes by RSS" %> | 
-    <%= list_item i18n('Export'), {:action => "export"}, "Download a zip with all the pages in this wiki", "X" %> | 
-    <input type="text" id="searchField" name="query" style="font-size: 10px" value="Search" onClick="this.value == 'Search' ? this.value = '' : true" />
+    <%= list_item _('Home Page'), {:action => 'show', :id => "HomePage"}, "Home, Sweet Home", "H" %> | 
+    <%= list_item _('All Pages'), {:action => 'list'}, "Alphabetically sorted list of pages", "A" %> | 
+    <%= list_item _('Recently Revised'), {:action =>"recently_revised"}, "Pages sorted by when they were last changed", "U" %> | 
+    <%= list_item _('Authors'), {:action => "authors"}, "Who wrote what" %> | 
+    <%= list_item _('Feeds'), {:action => "feeds"}, "Subscribe to changes by RSS" %> | 
+    <%= list_item _('Export'), {:action => "export"}, "Download a zip with all the pages in this wiki", "X" %> | 
+    <input type="text" id="searchField" name="query" style="font-size: 10px" value="<%= _('Search') %>" onClick="this.value == '<%= _('Search') %>' ? this.value = '' : true" />
   <% else %>
-  	<%= list_item i18n('Home Page'), {:action => 'published', :id => "HomePage"}, "Home, Sweet Home", "H" %>  
+  	<%= list_item _('Home Page'), {:action => 'published', :id => "HomePage"}, "Home, Sweet Home", "H" %>  
   <% end%>
 
 </form>

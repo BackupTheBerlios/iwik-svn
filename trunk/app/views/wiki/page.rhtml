@@ -27,17 +27,17 @@
 
 <div class="navigation">
   <% if @page.name == "HomePage" %>
-    <%= link_to('Edit Page', 
+    <%= link_to(_('Edit Page'), 
           {:web => @web.address, :action => 'edit', :id => @page.name}, 
           {:class => 'navlink', :accesskey => 'E'})
     %>
     | 
-    <%= link_to('Edit Web', 
+    <%= link_to(_('Edit Web'), 
             {:web => @web.address, :action => 'edit_web'}, 
             {:class => 'navlink'})
     %>
   <% else %>
-    <%= link_to('Edit', 
+    <%= link_to(_('Edit'), 
           {:web => @web.address, :action => 'edit', :id => @page.name}, 
           {:class => 'navlink', :accesskey => 'E'})
     %>
@@ -45,7 +45,7 @@
 
   <% if @page.revisions.length > 1 %>
     | 
-    <%= link_to('Back in time', 
+    <%= link_to(_('Back in time'), 
           {:web => @web.address, :action => 'revision', :id => @page.name, 
            :rev => @page.revisions.length - 2},
           {:class => 'navlink', :accesskey => 'R'})
@@ -55,16 +55,16 @@
 
   <% if @page.revisions.length > 1 %>
     <span id="show_changes">
-      | <a href="#" onClick="toggleChanges(); return false;">See changes</a>
+      | <a href="#" onClick="toggleChanges(); return false;"><%= _('See changes') %></a>
     </span>
     <span id="hide_changes" style="display: none">
-      | <a href="#" onClick="toggleChanges(); return false;">Hide changes</a>
+      | <a href="#" onClick="toggleChanges(); return false;"><%=_('Hide changes')%></a>
     </span>
   <% end %>
 
   <small>
     | Views: 
-    <%= link_to('Print',
+    <%= link_to(_('Print'),
           {:web => @web.address, :action => 'print', :id => @page.name},
           {:accesskey => 'p'}) %>
   <% if defined? RedClothForTex and RedClothForTex.available? and @web.markup == :textile %>

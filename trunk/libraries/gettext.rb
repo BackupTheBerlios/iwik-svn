@@ -9,7 +9,7 @@ class I18nFileList < Rake::FileList
         list += f.read.scan(I18nService::MSG_PATTERN).flatten
       end
     }
-    list.uniq!
+    list.uniq
   end
 end
 
