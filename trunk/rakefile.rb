@@ -74,3 +74,18 @@ task :stats do
   ).to_s
 end
 
+
+desc "Collect text to translate"
+task :gettext do
+  require 'pp'
+  fl = FileList['[A-Z]*', 'iwik', 'app/**/*']
+  list = []
+  fl.each{|fn|
+    next unless test(?f, fn)
+    File.open(fn) do |f|
+      list += f.read.scan(/i18n\('(.+?)'\)/m).flatten
+    end
+  }
+  list.uniq!
+  pp list
+end
