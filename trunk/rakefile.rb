@@ -15,6 +15,7 @@ require 'rake/rdoctask'
 require 'rake/packagetask'
 require 'rake/contrib/rubyforgepublisher'
 require 'code_statistics'
+require 'gettext'
 
 desc 'Default Task'
 task :default => :test
@@ -78,14 +79,6 @@ end
 desc "Collect text to translate"
 task :gettext do
   require 'pp'
-  fl = FileList['[A-Z]*', 'iwik', 'app/**/*']
-  list = []
-  fl.each{|fn|
-    next unless test(?f, fn)
-    File.open(fn) do |f|
-      list += f.read.scan(/i18n\('(.+?)'\)/m).flatten
-    end
-  }
-  list.uniq!
-  pp list
+  fl = I18nFileList['[A-Z]*', 'iwik', 'app/**/*']
+  pp fl.msg_list
 end
