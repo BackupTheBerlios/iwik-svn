@@ -3,7 +3,7 @@ $__iwik_source_patterns = ['[A-Z]*', 'iwik', 'app/**/*', 'libraries/**/*', 'vend
 spec = Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.name = 'iwik'
-  s.version = "0.1"
+  s.version = "0.1.0"
   s.summary = 'An wiki based on Instiki'
   s.description = <<-EOF
     Iwik is an Instiki based wiki.

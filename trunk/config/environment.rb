@@ -48,6 +48,7 @@ require 'action_controller'
 require 'active_record_stub'
 require 'instiki_errors'
 require 'routes'
+require 'i18n'
 
 unless defined? RAILS_DEFAULT_LOGGER
   RAILS_DEFAULT_LOGGER = Logger.new(STDERR)
