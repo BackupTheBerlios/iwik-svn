@@ -33,7 +33,7 @@ Rake::TestTask.new { |t|
   t.verbose = true
 }
 
-if defined? GemPackageTask
+if defined? Rake::GemPackageTask
   gemspec = eval(File.read('iwik.gemspec'))
   Rake::GemPackageTask.new(gemspec) do |p|
     p.gem_spec = gemspec
