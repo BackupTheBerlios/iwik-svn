@@ -40,7 +40,7 @@ require 'chunks/bork'
 # UPDATED: 22nd May 2004
 
 module ChunkManager
-  attr_reader :chunks_by_type, :chunks_by_id, :chunks
+  attr_reader :chunks_by_type, :chunks_by_id, :chunks, :chunk_num
   
   ACTIVE_CHUNKS = [ NoWiki, Category, WikiChunk::Link, URIChunk, LocalURIChunk, 
                     WikiChunk::Word ] 
@@ -59,12 +59,14 @@ module ChunkManager
     }
     @chunks_by_id = Hash.new
     @chunks = []
+    @chunk_num = 0
   end
 
   def add_chunk(c)
       @chunks_by_type[c.class] << c
       @chunks_by_id[c.id] = c
       @chunks << c
+      @chunk_num += 1
   end
 
   def delete_chunk(c)
@@ -78,12 +80,18 @@ module ChunkManager
   end
 
   def scan_chunkid(text)
-    text.scan(MASK_RE[ACTIVE_CHUNKS]){|a| yield a[0].to_i }
+    text.scan(MASK_RE[ACTIVE_CHUNKS]){|a| yield a[0] }
   end
   
   def find_chunks(chunk_type)
     @chunks_by_id.values.select { |chunk| chunk.kind_of?(chunk_type) and chunk.rendered? }
   end
+  
+  # for testing and WikiContentStub
+  def page_id
+    0
+  end
+
 end
 
 # A simplified version of WikiContent. Usefull to avoid recursion problems in 
@@ -155,7 +163,7 @@ class WikiContent < String
     @options[:link_type] = (link_type || :show)
     @web.make_link(name, text, @options)
   end
-
+  
   def build_chunks
     BorkChunk.apply_to(self)
     # create and mask Includes and "active_chunks" chunks
@@ -197,9 +205,9 @@ class WikiContent < String
        ret
     } 
 =end 
-    # unmask in one go. $~[1].to_i is the chunk id
+    # unmask in one go. $~[1] is the scanned chunk id
     gsub!(MASK_RE[ACTIVE_CHUNKS]){ 
-      if chunk = @chunks_by_id[$~[1].to_i]
+      if chunk = @chunks_by_id[$~[1]]
         chunk.unmask_text 
         # if we match a chunkmask that existed in the original content string
         # just keep it as it is
@@ -215,5 +223,9 @@ class WikiContent < String
     @revision.page.name
   end
 
+  def page_id
+    @revision.page.id
+  end
+  
 end
 

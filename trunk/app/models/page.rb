@@ -86,6 +86,10 @@ class Page
     @web.brackets_only ? name : WikiWords.separate(name)
   end
 
+  def id
+    @id ||= name.unpack('H*').first
+  end
+  
   def link(options = {})
     @web.make_link(name, nil, options)
   end

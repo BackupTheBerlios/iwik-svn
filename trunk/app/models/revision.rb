@@ -38,7 +38,7 @@ class Revision
   def wiki_includes
     unless @wiki_includes_cache 
       chunks = display_content.find_chunks(Include)
-      @wiki_includes_cache = chunks.map { |c| ( c.escaped? ? nil : c.page_name ) }.compact.uniq
+      @wiki_includes_cache = chunks.map{ |c| ( c.escaped? ? nil : c.page_name ) }.compact.uniq
     end
     @wiki_includes_cache
   end  
@@ -51,26 +51,27 @@ class Revision
     end
     @wiki_references_cache
   end  
-
-  # Returns an array of all the WikiWords present in the content of this revision.
-  def wiki_words
-    unless @wiki_words_cache 
+  
+  # fixme: wikiwords are actually wiki_links
+  # Returns an array of all the WikiLinks present in the content of this revision.
+  def wiki_links
+    unless @wiki_links_cache 
       wiki_chunks = display_content.find_chunks(WikiChunk::WikiLink)
-      @wiki_words_cache = wiki_chunks.map { |c| ( c.escaped? ? nil : c.page_name ) }.compact.uniq
+      @wiki_links_cache = wiki_chunks.map { |c| ( c.escaped? ? nil : c.page_name ) }.compact.uniq
     end
-    @wiki_words_cache
+    @wiki_links_cache
   end  
 
-  # Returns an array of all the WikiWords present in the content of this revision.
+  # Returns an array of all the WikiLinks present in the content of this revision.
   # that already exists as a page in the web.
   def existing_pages
-    wiki_words.select { |wiki_word| page.web.pages[wiki_word] }
+    wiki_links.select { |wiki_link| page.web.pages[wiki_link] }
   end
 
-  # Returns an array of all the WikiWords present in the content of this revision
+  # Returns an array of all the WikiLinks present in the content of this revision
   # that *doesn't* already exists as a page in the web.
   def unexisting_pages
-    wiki_words - existing_pages
+    wiki_links - existing_pages
   end  
 
   # Explicit check for new type of display cache with chunks_by_type method.
@@ -88,8 +89,8 @@ class Revision
   end
 
   def clear_display_cache
-    @display_cache = @published_cache = @wiki_words_cache = nil
-    @wiki_references_cache = @wiki_includes = nil
+    @display_cache = @published_cache = @wiki_links_cache = nil
+    @wiki_references_cache = @wiki_includes_cache= nil
   end
 
   def display_published

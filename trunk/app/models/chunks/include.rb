@@ -7,7 +7,7 @@ require 'chunks/wiki'
 # of changes to that page.
 # If the included page could not be found, a warning is displayed.
 class Include < WikiChunk::WikiReference
-  INCLUDE_PATTERN = /\[\[!include\s+(.*?)\]\]\s*/i
+  INCLUDE_PATTERN = /\[\[!include\s+(.*?)\]\](?=\s*)/i
   
   def self.pattern() INCLUDE_PATTERN end
 
