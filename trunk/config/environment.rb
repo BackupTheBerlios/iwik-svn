@@ -32,7 +32,7 @@ unless defined? ADDITIONAL_LOAD_PATHS
     vendor/bluecloth-1.0.0/lib
     vendor/madeleine-0.7.1/lib
     vendor/RedCloth-3.0.3/lib
-    vendor/rubyzip-0.5.6
+    vendor/rubyzip-0.5.8/lib
     vendor/actionpack/lib
     vendor/activesupport/lib
     vendor/railties/lib
