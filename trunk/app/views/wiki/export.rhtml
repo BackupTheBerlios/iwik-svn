@@ -3,10 +3,10 @@
 <p>You can export all the pages in this web as a zip file in either HTML (with working links and all) or the pure markup (to import in another wiki).</p> 
 
 <ul id="feedsList">
-  <li><a href="../export_html">HTML</a>
-  <li><a href="../export_markup">Markup (<%= @web.markup %>)</a>
+  <li><%= link_to("HTML", {:action => 'export_html'} )%>
+  <li><%= link_to("Markup (#{@web.markup})", {:action => 'export_markup'} ) %>
 <% if OPTIONS[:pdflatex] && @web.markup == :textile %>
-  <li><a href="../export_tex">TeX</a>
-  <li><a href="../export_pdf">PDF</a>
+  <li><%= link_to("TeX", {:action => 'export_tex'} )%>
+  <li><%= link_to("PDF", {:action => 'export_pdf'} )%>
 <% end %>
 </ul>
