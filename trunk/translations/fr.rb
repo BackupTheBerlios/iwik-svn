@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
+require 'i18nservice'
 
-$i18n_table["fr"] = {"Home Page" => "Accueil",
+
+I18nService::TABLE["fr"] = {"Home Page" => "Accueil",
 	           "All Pages" => "Toutes les pages",
 		   "Recently Revised" => "Modifications récentes",
 		   "Authors" => "Auteurs"}
