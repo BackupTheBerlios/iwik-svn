@@ -23,12 +23,9 @@ class Include < WikiChunk::WikiReference
                        "<em>Recursive include detected; #{@page_name} --> #{@content.page_name} --> #{@page_name}</em>\n"
 
                      else
-                       $stderr.puts "Including #@page_name nbc = #{@content.chunks.size}"
 		       @content.chunks.each{|c| $stderr.puts c.mask}
                        @content.merge_chunks(refpage.display_content)
-                       $stderr.puts "Included #@page_name nbc = #{@content.chunks.size}"
 		       @content.chunks.each{|c| $stderr.puts c.mask}
-		       $stderr.puts "\n"
                        refpage.display_content.pre_rendered 
                      end
                    else
