@@ -52,7 +52,6 @@ class Revision
     @wiki_references_cache
   end  
   
-  # fixme: wikiwords are actually wiki_links
   # Returns an array of all the WikiLinks present in the content of this revision.
   def wiki_links
     unless @wiki_links_cache 

@@ -1,4 +1,4 @@
-#!/bin/env ruby -w
+#!/bin/env ruby 
 
 require File.dirname(__FILE__) + '/../test_helper'
 require 'web'
@@ -13,10 +13,10 @@ class PageTest < Test::Unit::TestCase
   end
 
   def setup
-    @page = Page.new(
-      MockWeb.new,
-      "FirstPage", 
-      "HisWay would be MyWay in kinda ThatWay in HisWay though MyWay \\OverThere -- see SmartEngine in that SmartEngineGUI", 
+    @page = Page.new(MockWeb.new, "FirstPage")
+      # this is now done in web.write_page, not in page.new
+      # so we have to do it manually here
+      @page.revise("HisWay would be MyWay in kinda ThatWay in HisWay though MyWay \\OverThere -- see SmartEngine in that SmartEngineGUI", 
       Time.local(2004, 4, 4, 16, 50),
       "DavidHeinemeierHansson")
   end
