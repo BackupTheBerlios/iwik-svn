@@ -1,7 +1,13 @@
 * initial import:
-	based on Instiki svn revision 173
 	Refactored chunks and wiki_content.rb 
 	Fixed broken links in edit_web
 	Fixed the "All Pages" link (list.rhtml)
-	railties + actionpack + activesupport : revision 901 + url_for hotfix
+	actionpack: url_for hotfix
+	hard_break option for Redcloth on by default
 	
+* initial Instiki working copy:
+	revision 173
+	railties + actionpack + activesupport : revision 901 
+	
+	
+For changes between Instiki 0.9.2 and Instiki svn revision 173, see CHANGELOG.Instiki
