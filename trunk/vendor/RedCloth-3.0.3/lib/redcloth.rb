@@ -523,14 +523,14 @@ class RedCloth < String
                 if line =~ LISTS_CONTENT_RE 
                     tl,atts,content = $~[1..3]
                     if depth.last
-                        if depth.last and depth.last.length == tl.length
+                        if depth.last.length > tl.length
                             (depth.length - 1).downto(0) do |i|
                                 break if depth[i].length == tl.length
                                 lines[line_id - 1] << "</li>\n\t</#{ lT( depth[i] ) }l>\n\t"
                                 depth.pop
                             end
                         end
-                        if depth.last.length == tl.length
+                        if depth.last and depth.last.length == tl.length
                             lines[line_id - 1] << '</li>'
                         end
                     end
