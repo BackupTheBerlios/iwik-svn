@@ -3,24 +3,21 @@ $__iwik_source_patterns = ['[A-Z]*', 'iwik', 'app/**/*', 'libraries/**/*', 'vend
 spec = Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.name = 'iwik'
-  s.version = "0.9.2"
-  s.summary = 'Easy to install WikiClone running on WEBrick and Madeleine'
+  s.version = "0.1"
+  s.summary = 'An wiki based on Instiki'
   s.description = <<-EOF
-    Instiki is a Wiki Clone written in Ruby that ships with an embedded 
-    webserver. You can setup up an Instiki in just a few steps. 
-    Possibly the simplest wiki setup ever.
+    Iwik is an Instiki based wiki.
   EOF
-  s.author = 'David Heinemeier Hansson'
-  s.email = 'david@loudthinking.com'
-  s.rubyforge_project = 'instiki'
-  s.homepage = 'http://www.instiki.org'
+  s.author = 'Denis Mertz'
+  s.email = 'dmertz at online dot de'
+  s.homepage = 'http://developer.berlios.de/projects/iwik/'
 
   s.bindir = '.'
   s.executables = ['iwik']
   s.default_executable = 'iwik'
 
   s.has_rdoc = true
-  s.rdoc_options << '--title' << 'Instiki -- The Wiki' << 
+  s.rdoc_options << '--title' << 'Iwik -- The Wiki' << 
                     '--line-numbers' << '--inline-source'
   # TODO: specify README as main RDoc file
   
