@@ -23,6 +23,11 @@ class WikiTest < Test::Unit::TestCase
 	match(WikiChunk::Link, 'This is a [[bracketted link]]',
 		:page_name => 'bracketted link')
   end
+  
+  def test_include_brackets
+	content = 'This is a [[!include pagename]] and [[!include WikiWord]] but [[blah]]'
+	assert_equal(%w(pagename WikiWord), content.scan(Include.pattern).map{|m| m[0] })
+  end
 
   def test_complex_brackets
 	match(WikiChunk::Link, 'This is a tricky link [[Sperberg-McQueen]]',
