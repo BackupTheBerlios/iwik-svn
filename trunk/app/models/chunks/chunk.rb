@@ -51,10 +51,15 @@ module Chunk
           end
         end
 
-        def mask
+        
+	# should contain only [a-z0-9]
+	def mask
 	  @mask ||="chunk#{@id}#{self.class.mask_string}chunk"
 	end
 
+	# We should not use object_id because object_id is not guarantied 
+	# to be unique when we restart the wiki (new object ids can equal old ones
+	# that were restored form madeleine storage)  
 	def id
 	  @id ||= "#{@content.page_id}n#{@content.chunk_num}"
 	end

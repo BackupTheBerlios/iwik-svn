@@ -89,7 +89,7 @@ class Revision
 
   def clear_display_cache
     @display_cache = @published_cache = @wiki_links_cache = nil
-    @wiki_references_cache = @wiki_includes_cache= nil
+    @wiki_references_cache = @wiki_includes_cache = nil
   end
 
   def display_published
@@ -106,7 +106,6 @@ class Revision
   
   def force_rendering
     begin
-      clear_display_cache
       display_content.render!
     rescue Exception => e
       ApplicationController.logger.error "Failed rendering page #{@name}"

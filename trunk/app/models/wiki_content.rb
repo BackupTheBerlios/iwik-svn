@@ -84,17 +84,17 @@ module ChunkManager
   end
   
   def find_chunks(chunk_type)
-    @chunks_by_id.values.select { |chunk| chunk.kind_of?(chunk_type) and chunk.rendered? }
+    @chunks.select { |chunk| chunk.kind_of?(chunk_type) and chunk.rendered? }
   end
   
-  # for testing and WikiContentStub
+  # for testing and WikiContentStub; we need a page_id even if we have no page
   def page_id
     0
   end
 
 end
 
-# A simplified version of WikiContent. Usefull to avoid recursion problems in 
+# A simplified version of WikiContent. Useful to avoid recursion problems in 
 # WikiContent.new
 class WikiContentStub < String
   attr_reader :options
@@ -138,7 +138,6 @@ class WikiContent < String
     @revision = revision
     @web = @revision.page.web
 
-    # Deep copy of DEFAULT_OPTS to ensure that changes to PRE/POST_ENGINE_ACTIONS stay local
     @options = DEFAULT_OPTS.dup.merge(options)
     @options[:engine] = Engines::MAP[@web.markup] 
     @options[:engine_opts] = [:filter_html, :filter_styles] if @web.safe_mode
@@ -149,11 +148,8 @@ class WikiContent < String
     @options[:active_chunks] = (ACTIVE_CHUNKS - [WikiChunk::Word] ) if @web.brackets_only
 
     super(@revision.content)
-    
     init_chunk_manager
-
     build_chunks
-    
     @not_rendered = String.new(self)
   
   end
@@ -196,15 +192,7 @@ class WikiContent < String
   def render!
     pre_render!
     @options[:engine].apply_to(self)
-=begin     
-    count = 0
-    ret=nil
-    gsub!(MASK_RE[ACTIVE_CHUNKS]){
-       ret=@chunks.at(count).unmask_text
-       count += 1
-       ret
-    } 
-=end 
+    
     # unmask in one go. $~[1] is the scanned chunk id
     gsub!(MASK_RE[ACTIVE_CHUNKS]){ 
       if chunk = @chunks_by_id[$~[1]]

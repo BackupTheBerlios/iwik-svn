@@ -88,6 +88,7 @@ class Page
     @web.brackets_only ? name : WikiWords.separate(name)
   end
 
+  # used to build chunk ids. 
   def id
     @id ||= name.unpack('H*').first
   end
