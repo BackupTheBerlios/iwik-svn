@@ -39,14 +39,13 @@ module AbstractWikiService
   
   def read_page(web_address, page_name)
     ApplicationController.logger.debug "Reading page '#{page_name}' from web '#{web_address}'"
-    web = @webs[web_address]
-    if web.nil?
-      ApplicationController.logger.debug "Web '#{web_address}' not found"
-      return nil
-    else
+    if web = @webs[web_address]
       page = web.pages[page_name]
       ApplicationController.logger.debug "Page '#{page_name}' #{page.nil? ? 'not' : ''} found"
-      return page
+      page
+    else
+      ApplicationController.logger.debug "Web '#{web_address}' not found"
+      nil
     end
   end
 
