@@ -1,3 +1,6 @@
+        First i18n work
+        A lot of small url fixes (routing)
+
 * initial import:
 	Refactored chunks and wiki_content.rb 
 	Fixed broken links in edit_web
