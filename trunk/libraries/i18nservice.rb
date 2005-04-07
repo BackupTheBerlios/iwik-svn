@@ -5,8 +5,10 @@ class I18nService
   attr_accessor :lang
   MSG_PATTERN = /_\('(.+?)'\)/m
   def lang=(l)
-    load 'i18n.rb' unless @lang == l
-    @lang = l 
+    unless ( @lang == l ) 
+      @lang = l 
+      load 'i18n.rb' 
+    end
   end
 end
   

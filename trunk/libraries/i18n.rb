@@ -10,7 +10,7 @@ end
 
 case i18nserv.lang
 when "fr"
-  load 'translations/fr.rb'
+  load File.dirname(__FILE__) + '/../translations/fr.rb'
 else
   def _(string)
     string
