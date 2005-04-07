@@ -16,4 +16,6 @@ I18nService::TABLE = {"Home Page" => "Accueil",
 		   'See changes' => 'Voir les modifications',
 		   'Hide changes' => 'Cacher les modifications',
 		   'Test String' => 'Chaîne de Test',
-		   'Cooking test' => 'Test de cuisson',}
+		   'Cooking test' => 'Test de cuisson', 
+		   'Summer' => 'Été', 
+		   'summer' => 'été'}

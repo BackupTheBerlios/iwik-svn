@@ -8,11 +8,11 @@ def _(string)
   I18nService::TABLE.fetch(string, string) 
 end
 
-case i18nserv.lang
-when "fr"
-  load File.dirname(__FILE__) + '/../translations/fr.rb'
-else
-  def _(string)
-    string
+
+  if i18nserv.lang and i18nserv.lang.kind_of?(String) then
+    load File.dirname(__FILE__) + "/../translations/#{i18nserv.lang}.rb"
+  else
+    def _(string)
+      string
+    end
   end
-end

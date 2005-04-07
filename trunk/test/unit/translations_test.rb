@@ -27,5 +27,10 @@ class TranslationTest < Test::Unit::TestCase
   def test_utf8_chars
     I18N.lang = "fr"
     assert_equal('Chaîne de Test', _('Test String'))
+    assert_equal('Été', _('Summer'))
+    assert_equal('été', _('summer'))
+   
+    I18N.lang = "de"
+    assert_equal('Straße', _('Road'))
   end
 end

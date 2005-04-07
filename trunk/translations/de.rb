@@ -4,8 +4,8 @@ require 'i18nservice'
 
 I18nService::TABLE = {
 'All Pages' => 'Alle Seiten',
-'Authors' => 'Autor',
-'Back in time' => 'Zurück',
+'Authors' => 'Autoren',
+'Back in time' => 'ZurÃ¼ck',
 'Cooking test' => 'Kochtest',
 'Edit' => 'Editieren',
 'Edit Page' => 'Seite Editieren',
@@ -16,8 +16,9 @@ I18nService::TABLE = {
 'Home Page' => 'Startseite',
 'Print' => 'Drucken',
 # 'Recently Revised' => '',
+'Road' => 'StraÃŸe',
 'Search' => 'Suchen',
-'See changes' => 'Änderung sehen',
+'See changes' => 'Ã„nderung sehen',
 'Test String' => 'Test Textfolge',
 'co- or authored:' => 'Co- or Autor von: '
 }
