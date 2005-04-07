@@ -4,12 +4,13 @@ require 'i18nservice'
 
 i18nserv = I18nService.instance
 
+def _(string)
+  I18nService::TABLE.fetch(string, string) 
+end
+
 case i18nserv.lang
 when "fr"
   require 'translations/fr'
-  def _(string)
-    I18nService::TABLE["fr"][string] or string
-  end
 else
   def _(string)
     string

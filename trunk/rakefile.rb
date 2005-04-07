@@ -81,4 +81,5 @@ task :gettext do
   require 'pp'
   fl = I18nFileList['[A-Z]*', 'iwik', 'app/**/*']
   pp fl.msg_list
+  fl.write_template
 end
