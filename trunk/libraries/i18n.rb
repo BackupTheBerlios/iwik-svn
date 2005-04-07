@@ -10,7 +10,7 @@ end
 
 case i18nserv.lang
 when "fr"
-  require 'translations/fr'
+  load 'translations/fr.rb'
 else
   def _(string)
     string
