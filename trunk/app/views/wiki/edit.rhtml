@@ -16,21 +16,21 @@
     <textarea name="content" style="width: 450px; height: 500px"><%= @page.content %></textarea>
 </p>
 <p>
-    <input type="submit" value="Submit" accesskey="s"/> as 
+    <input type="submit" value="<%= _('Submit') %>" accesskey="s"/> as 
     <input type="text" name="author" id="authorName" value="<%= @author %>" 
-        onClick="this.value == 'AnonymousCoward' ? this.value = '' : true" />
+        onClick="this.value == '<%= _('AnonymousCoward') %>' ? this.value = '' : true" />
     | 
     <%= link_to(_('Cancel'), {:web => @web.address, :action => 'cancel_edit', :id => @page.name},
           {:accesskey => 'c'})
     %>
-    <small>(unlocks page)</small>
+    <small>(<%= _('unlocks page') %>)</small>
 </p>
 <%= end_form_tag %>
 
 <script language="JavaScript1.2">
 function cleanAuthorName() {
   if (document.getElementById('authorName').value == "") {
-    document.getElementById('authorName').value = 'AnonymousCoward';
+    document.getElementById('authorName').value = '<%= _('AnonymousCoward') %>';
   }
 }
 </script>
