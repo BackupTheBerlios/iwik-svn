@@ -55,7 +55,7 @@ class I18nService
   
   def save_table(lang)
     in_translation_dir do
-      FileUtils.cp(filename(lang), "#{filename(lang)}.bak")
+      FileUtils.cp(filename(lang), "#{filename(lang)}.bak") if test(?f, filename(lang))
       File.open(filename(lang), File::CREAT|File::WRONLY|File::TRUNC){|f|
         f << @table.format_for_translation   
       }
