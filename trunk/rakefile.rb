@@ -78,9 +78,7 @@ end
 
 desc "Collect text to translate"
 task :gettext do
-  require 'pp'
   fl = I18nFileList['[A-Z]*', 'iwik', 'app/**/*', 'test/unit/translations_test.rb']
-  pp fl.msg_list
   fl.write_template
   fl.update
 end
