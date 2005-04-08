@@ -2,15 +2,14 @@
 
 require 'i18nservice'
 
-i18nserv = I18nService.instance
 
 def _(string)
-  I18nService::TABLE.fetch(string, string) 
+  I18nService.instance.table.fetch(string, string) or string
 end
 
 
-  if i18nserv.lang and i18nserv.lang.kind_of?(String) then
-    load File.dirname(__FILE__) + "/../translations/#{i18nserv.lang}.rb"
+  if I18nService.instance.lang and I18nService.instance.lang.kind_of?(String) then
+    Kernel::load I18nService::TRANS_DIR + "/#{I18nService.instance.lang}.rb"
   else
     def _(string)
       string

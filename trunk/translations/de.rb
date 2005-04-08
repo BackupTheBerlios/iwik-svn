@@ -2,23 +2,26 @@
 
 require 'i18nservice'
 
-I18nService::TABLE = {
-'All Pages' => 'Alle Seiten',
-'Authors' => 'Autoren',
-'Back in time' => 'Zurück',
-'Cooking test' => 'Kochtest',
-'Edit' => 'Editieren',
-'Edit Page' => 'Seite Editieren',
-'Edit Web' => 'Konfigurieren',
-'Export' => 'Exportieren',
-# 'Feeds' => '',
-# 'Hide changes' => '',
-'Home Page' => 'Startseite',
-'Print' => 'Drucken',
-# 'Recently Revised' => '',
+I18nService.instance.table = {
 'Road' => 'Straße',
+'co- or authored:' => 'Co- or Autor von: ',
+'Textile formatting tips' => nil,
 'Search' => 'Suchen',
-'See changes' => 'Änderung sehen',
+'Print' => 'Drucken',
+'Edit' => 'Editieren',
+'summer' => 'Sommer',
+'Summer' => 'Sommer',
+'See changes' => 'Änderungen sehen',
+'Hide changes' => 'Änderungen ausblenden',
+'Home Page' => 'Startseite',
+'Cooking test' => 'Kochtest',
+'Back in time' => 'Zurück',
+'Edit Web' => 'Konfigurieren',
+'Authors' => 'Autoren',
 'Test String' => 'Test Textfolge',
-'co- or authored:' => 'Co- or Autor von: '
+'Edit Page' => 'Seite Editieren',
+'Export' => 'Exportieren',
+'Recently Revised' => nil,
+'All Pages' => 'Alle Seiten',
+'Feeds' => 'Feeds'
 }

@@ -1,13 +1,64 @@
 require 'singleton'
+require 'msglist'
 
 class I18nService
   include Singleton
   attr_accessor :lang
+  attr_accessor :table
   MSG_PATTERN = /_\('(.+?)'\)/m
+  TRANS_DIR = File.dirname(__FILE__) + '/../translations'
+  FILE_PATTERN = "??.rb"
+
   def lang=(l)
     unless ( @lang == l ) 
       @lang = l 
       load 'i18n.rb' 
+    end
+  end
+
+  def in_translation_dir
+    wd = Dir.getwd
+    ret = nil
+    begin
+      Dir.chdir(TRANS_DIR)
+      ret = yield
+    ensure
+      Dir.chdir(wd)
+    end
+    ret
+  end
+  # access the translation files
+  def each_file
+    in_translation_dir do
+      Dir[FILE_PATTERN].each{|fn| yield fn}
+    end
+  end
+  
+  def available_languages
+    ret = in_translation_dir do
+      Dir[FILE_PATTERN]
+    end
+    ret.collect{|fn| fn[0,2]}.sort
+  end  
+  
+  def update_languages(new_msgs)
+    available_languages.each{|la|
+      self.lang = la
+      @table = new_msgs.update(@table)
+      save_table(la)
+    }
+  end
+  
+  def filename(lang)
+    "#{lang}.rb"
+  end
+  
+  def save_table(lang)
+    in_translation_dir do
+      FileUtils.cp(filename(lang), "#{filename(lang)}.bak")
+      File.open(filename(lang), File::CREAT|File::WRONLY|File::TRUNC){|f|
+        f << @table.format_for_translation   
+      }
     end
   end
 end

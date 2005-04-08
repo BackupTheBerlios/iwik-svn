@@ -82,4 +82,5 @@ task :gettext do
   fl = I18nFileList['[A-Z]*', 'iwik', 'app/**/*', 'test/unit/translations_test.rb']
   pp fl.msg_list
   fl.write_template
+  fl.update
 end

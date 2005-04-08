@@ -1,27 +1,8 @@
 require 'i18nservice'
+require 'msglist'
 
-class Mesg < String
-  def format_for_translation
-    "'#{self}' => ''"
-  end
-end
+I18N = I18nService.instance
 
-class MsgList < Array
-  def format_for_translation
-    head = <<HEAD
-#!/usr/bin/env ruby
-
-require 'i18nservice'
-
-I18nService::TABLE = {
-HEAD
-    
-    content = collect{|m| m.format_for_translation}.join(",\n")
-    
-    head + content + "\n}"
-  end
-
-end
 
 class I18nFileList < Rake::FileList
   def msg_list 
@@ -33,8 +14,9 @@ class I18nFileList < Rake::FileList
       end
     }
     list.uniq!
-    list.collect!{|m| Mesg.new(m)}
-    MsgList.new(list.sort)
+    ret = Hash.new
+    list.each{|m| ret[m] = nil}
+    ret
   end
   # write a formated file with the english strings to translate
   def write_template
@@ -42,6 +24,9 @@ class I18nFileList < Rake::FileList
               File::CREAT|File::WRONLY|File::TRUNC){|f|
       f << msg_list.format_for_translation   
     }
+  end
+  def update
+    I18N.update_languages(msg_list)
   end
 end
 

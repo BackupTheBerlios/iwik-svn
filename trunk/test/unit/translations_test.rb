@@ -6,6 +6,16 @@ require 'i18nservice'
 
 I18N = I18nService.instance
 
+class GettextTest < Test::Unit::TestCase
+  def test_available
+    wd = Dir.getwd
+    assert_equal(%w{de fr}, I18N.available_languages)
+    
+    # check that workdir is not changed
+    assert_equal(wd, Dir.getwd)
+  end
+end
+
 class TranslationTest < Test::Unit::TestCase
   # reset to default
   def setup
