@@ -9,7 +9,7 @@ I18N = I18nService.instance
 class GettextTest < Test::Unit::TestCase
   def test_available
     wd = Dir.getwd
-    assert_equal(%w{de fr xx}, I18N.available_languages)
+    assert_equal(%w{de fr}, I18N.available_languages)
     
     # check that workdir is not changed
     assert_equal(wd, Dir.getwd)
@@ -27,10 +27,12 @@ class TranslationTest < Test::Unit::TestCase
   end
 
   def test_load_and_save
+    I18N.lang='xx'
     I18N.table = {'blue' => 'bleu', 'summer' => 'été', 'untranslated' => nil}
     I18N.save_table('xx')
     
     I18N.lang = nil
+    assert_equal({}, I18N.table)
     assert_equal('blue', _('blue'))
     assert_equal('untranslated', _('untranslated'))
     assert_equal('summer', _('summer'))
@@ -42,6 +44,12 @@ class TranslationTest < Test::Unit::TestCase
 
     assert_equal({'blue' => 'bleu', 'summer' => 'été', 'untranslated' => nil}, I18N.table)
     
+    I18N.in_translation_dir do
+      File.delete(I18N.filename('xx'))
+    end
+  end
+  
+  def test_update
   end
     
   def test_simple

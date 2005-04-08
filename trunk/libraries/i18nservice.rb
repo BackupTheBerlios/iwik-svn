@@ -42,11 +42,13 @@ class I18nService
   end  
   
   def update_languages(new_msgs)
-    available_languages.each{|la|
-      self.lang = la
-      @table = new_msgs.update(@table)
-      save_table(la)
-    }
+    available_languages.each{|la| self.update(la, new_msgs)    }
+  end
+  
+  def update(lang, new_msgs)
+    self.lang = lang
+    @table = new_msgs.update(@table)
+    save_table(lang)
   end
   
   def filename(lang)
