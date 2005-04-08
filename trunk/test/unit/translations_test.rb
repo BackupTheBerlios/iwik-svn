@@ -19,19 +19,24 @@ end
 class TranslationTest < Test::Unit::TestCase
   # reset to default
   def setup
-    I18N.lang = nil
-  end
-
-  def test_default_is_english
-    assert_equal('Test String', _('Test String'))
-  end
-
-  def test_load_and_save
     I18N.lang='xx'
     I18N.table = {'blue' => 'bleu', 'summer' => 'été', 'untranslated' => nil}
     I18N.save_table('xx')
     
     I18N.lang = nil
+  end
+
+  def teardown
+    I18N.in_translation_dir do
+      File.delete(I18N.filename('xx')) if test(?f, I18N.filename('xx'))
+    end
+  end
+  
+  def test_default_is_english
+    assert_equal('Test String', _('Test String'))
+  end
+
+  def test_load_and_save
     assert_equal({}, I18N.table)
     assert_equal('blue', _('blue'))
     assert_equal('untranslated', _('untranslated'))
@@ -43,13 +48,12 @@ class TranslationTest < Test::Unit::TestCase
     assert_equal('été', _('summer'))
 
     assert_equal({'blue' => 'bleu', 'summer' => 'été', 'untranslated' => nil}, I18N.table)
-    
-    I18N.in_translation_dir do
-      File.delete(I18N.filename('xx'))
-    end
   end
   
   def test_update
+    I18N.update('xx', {'red' => nil, 'blue' => nil})
+    assert_equal({'blue' => 'bleu', 'red' => nil, 
+                  'summer' => 'été', 'untranslated' => nil}, I18N.table)
   end
     
   def test_simple
