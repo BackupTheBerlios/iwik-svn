@@ -101,9 +101,7 @@ module AbstractWikiService
   end
 
   def write_page(web_address, page_name, content, written_on, author)
-    page = Page.new(@webs[web_address], page_name)
-    @webs[web_address].add_page(page)
-    page.revise(content, written_on, author)
+    @webs[web_address].add_page(page_name, content, written_on, author)
   end
 
   def storage_path

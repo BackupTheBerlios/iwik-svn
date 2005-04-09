@@ -17,13 +17,13 @@ class WikiContentTest < Test::Unit::TestCase
     @web.markup = :textile
     @t =  Time.local(2004, 4, 4, 16, 50)
     @a =  "DavidHeinemeierHansson"
-    @page = Page.new(@web, "FirstPage")
-    @page.revise("FirstPage content text", @t, @a)
-    @web.add_page(@page)
     
-    @include_page = Page.new(@web, "IncludedPage")
-    @include_page.revise("autolink.fr @IncludedPage@ content text <nowiki>HeyWord [[blah]]</nowiki>", @t, @a)
-    @web.add_page(@include_page)
+    @web.add_page("FirstPage", "FirstPage content text", @t, @a)
+    @page = @web.pages["FirstPage"]
+    
+    @web.add_page("IncludedPage", 
+         "autolink.fr @IncludedPage@ content text <nowiki>HeyWord [[blah]]</nowiki>", @t, @a)
+    @include_page = @web.pages["IncludedPage"]
   end
 
   def teardown
