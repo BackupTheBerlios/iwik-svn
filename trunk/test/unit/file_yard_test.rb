@@ -47,7 +47,7 @@ class FileYardTest < Test::Unit::TestCase
 
     # as Tempfile
     require 'tempfile'
-    Tempfile.open('acceptable_file') { |f| f.write(one_kylobyte_string) } 
+    Tempfile.open('acceptable_file') { |f| f.write(one_kylobyte_string) 
       assert_nothing_raised { 
         @yard.upload_file('acceptable_file', f) 
       }

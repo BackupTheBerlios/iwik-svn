@@ -9,15 +9,14 @@ class WebTest < Test::Unit::TestCase
   end
   
   def test_wiki_word_linking
-    @web.add_page(Page.new(@web, 'SecondPage', 'Yo, yo. Have you EverBeenHated', Time.now, 
-        'DavidHeinemeierHansson'))
+    @web.add_page(Page.new(@web, 'SecondPage').revise('Yo, yo. Have you EverBeenHated', 
+                                                       Time.now, 'DavidHeinemeierHansson'))
     
     assert_equal('<p>Yo, yo. Have you <span class="newWikiWord">Ever Been Hated' + 
         '<a href="../show/EverBeenHated">?</a></span></p>', 
     @web.pages["SecondPage"].display_content)
     
-    @web.add_page(Page.new(@web, 'EverBeenHated', 'Yo, yo. Have you EverBeenHated', Time.now, 
-        'DavidHeinemeierHansson'))
+    @web.add_page(Page.new(@web, 'EverBeenHated').revise('Yo, yo. Have you EverBeenHated', Time.now, 'DavidHeinemeierHansson'))
     assert_equal('<p>Yo, yo. Have you <a class="existingWikiWord" ' +
         'href="../show/EverBeenHated">Ever Been Hated</a></p>', 
     @web.pages['SecondPage'].display_content)
@@ -108,9 +107,9 @@ class WebTest < Test::Unit::TestCase
     assert_equal :textile, web.markup
     assert_equal '008B26', web.color
     assert !web.safe_mode
-    assert_equal {}, web.pages
+    assert_equal({}, web.pages)
     assert web.allow_uploads
-    assert_equal @wiki, web.parent_wiki
+    assert_equal @wiki, web.wiki
     assert_nil web.additional_style
     assert !web.published
     assert !web.brackets_only
@@ -123,9 +122,9 @@ class WebTest < Test::Unit::TestCase
   private
 
   def add_sample_pages
-    @web.add_page(Page.new(@web, 'EverBeenInLove', 'Who am I me', 
+    @web.add_page(Page.new(@web, 'EverBeenInLove').revise('Who am I me', 
     Time.local(2004, 4, 4, 16, 50), 'DavidHeinemeierHansson'))
-    @web.add_page(Page.new(@web, 'EverBeenHated', 'I am me EverBeenHated', 
+    @web.add_page(Page.new(@web, 'EverBeenHated').revise('I am me EverBeenHated', 
     Time.local(2004, 4, 4, 16, 51), 'DavidHeinemeierHansson'))
   end
 end

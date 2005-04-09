@@ -17,8 +17,7 @@ class PageTest < Test::Unit::TestCase
       # this is now done in web.write_page, not in page.new
       # so we have to do it manually here
       @page.revise("HisWay would be MyWay in kinda ThatWay in HisWay though MyWay \\OverThere -- see SmartEngine in that SmartEngineGUI", 
-      Time.local(2004, 4, 4, 16, 50),
-      "DavidHeinemeierHansson")
+      Time.local(2004, 4, 4, 16, 50), "DavidHeinemeierHansson")
   end
 
   def test_lock
