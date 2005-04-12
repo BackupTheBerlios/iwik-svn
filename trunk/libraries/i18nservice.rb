@@ -55,6 +55,21 @@ class I18nService
     "#{lang}.rb"
   end
   
+  def try_load
+    loaded = true	
+    if @lang and @lang.kind_of?(String) then
+      fn = TRANS_DIR + "/" + filename(@lang)
+      begin
+        Kernel::load(fn)
+      rescue LoadError
+        loaded = false
+      end
+    else
+      loaded = false
+    end
+    loaded
+  end
+    
   def save_table(lang)
     in_translation_dir do
       FileUtils.cp(filename(lang), "#{filename(lang)}.bak") if test(?f, filename(lang))
