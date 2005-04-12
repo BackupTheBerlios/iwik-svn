@@ -16,6 +16,34 @@ class GettextTest < Test::Unit::TestCase
   end
 end
 
+class TranslationIOTest < Test::Unit::TestCase
+  
+  def setup
+    po = <<END_PO
+msgid hello
+msgstr salut
+
+msgid two
+msgstr deux    
+END_PO
+    I18N.in_translation_dir do
+      File.open('iotest',
+                 File::CREAT|File::WRONLY|File::TRUNC){|f|  f << po   }
+    end
+  end
+
+  def teardown
+    I18N.in_translation_dir do
+      File.delete('iotest') if test(?f, 'iotest')
+    end
+  end
+  
+  def test_load
+    assert_equal({'hello' => 'salut', 'two' => 'deux'}, I18N.read_po('iotest'))
+  end
+  
+end
+
 class TranslationTest < Test::Unit::TestCase
   # reset to default
   def setup

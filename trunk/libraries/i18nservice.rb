@@ -55,11 +55,23 @@ class I18nService
     "#{lang}.rb"
   end
   
+  def read_po(fn)
+    ret = {}
+    in_translation_dir do
+      File.read(fn).split(/\n{2,}/m).each{|s|
+        s =~ /msgid\s+(.+)msgstr\s+(.+)/m
+	ret[$1.strip] = $2.strip
+      }
+    end
+    ret
+  end
+  
   def try_load
     loaded = true	
     if @lang and @lang.kind_of?(String) then
       fn = TRANS_DIR + "/" + filename(@lang)
       begin
+        # @table = read_po(fn)
         Kernel::load(fn)
       rescue LoadError
         loaded = false
