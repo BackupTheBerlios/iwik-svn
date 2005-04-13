@@ -61,7 +61,8 @@ class I18nService
       File.read(fn).split(/(?:\n\n)|(?:\n \n)/m).each{|s|
         s =~ /msgid\s+(.+)msgstr\s+(.*)/m
         str = $2.strip
-        ret[$1.strip] = str.empty? ? nil : str
+        id = $1.strip[1..-2]
+        ret[id] = ((str == '""') ? nil : str[1..-2])
       }
     end
     ret

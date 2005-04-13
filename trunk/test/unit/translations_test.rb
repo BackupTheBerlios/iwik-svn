@@ -20,14 +20,14 @@ class TranslationIOTest < Test::Unit::TestCase
   
   def setup
     po = <<END_PO
-msgid hello
-msgstr salut
+msgid "hello"
+msgstr "salut"
  
-msgid two
-msgstr deux    
+msgid "two"
+msgstr "deux"    
  
-msgid untranslated
-msgstr 
+msgid "untranslated"
+msgstr ""
   
 END_PO
     I18N.in_translation_dir do
@@ -43,7 +43,8 @@ END_PO
   end
   
   def test_load
-    assert_equal({'hello' => 'salut', 'two' => 'deux', 'untranslated' => nil}, I18N.read_po('iotest'))
+    assert_equal({'hello' => 'salut', 'two' => 'deux', 
+                  'untranslated' => nil}, I18N.read_po('iotest'))
   end
   
 end
