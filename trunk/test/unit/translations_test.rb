@@ -22,9 +22,13 @@ class TranslationIOTest < Test::Unit::TestCase
     po = <<END_PO
 msgid hello
 msgstr salut
-
+ 
 msgid two
 msgstr deux    
+ 
+msgid untranslated
+msgstr 
+  
 END_PO
     I18N.in_translation_dir do
       File.open('iotest',
@@ -39,7 +43,7 @@ END_PO
   end
   
   def test_load
-    assert_equal({'hello' => 'salut', 'two' => 'deux'}, I18N.read_po('iotest'))
+    assert_equal({'hello' => 'salut', 'two' => 'deux', 'untranslated' => nil}, I18N.read_po('iotest'))
   end
   
 end
@@ -49,7 +53,7 @@ class TranslationTest < Test::Unit::TestCase
   def setup
     I18N.lang='xx'
     I18N.table = {'blue' => 'bleu', 'summer' => 'été', 'untranslated' => nil}
-    I18N.save_table('xx')
+    I18N.write_po('xx')
     
     I18N.lang = nil
   end
@@ -71,11 +75,11 @@ class TranslationTest < Test::Unit::TestCase
     assert_equal('summer', _('summer'))
     
     I18N.lang = "xx"
+    assert_equal({'blue' => 'bleu', 'summer' => 'été', 'untranslated' => nil}, I18N.table)
     assert_equal('bleu', _('blue'))
     assert_equal('untranslated', _('untranslated'))
     assert_equal('été', _('summer'))
 
-    assert_equal({'blue' => 'bleu', 'summer' => 'été', 'untranslated' => nil}, I18N.table)
   end
   
   def test_update

@@ -48,19 +48,20 @@ class I18nService
   def update(lang, new_msgs)
     self.lang = lang
     @table = new_msgs.update(@table)
-    save_table(lang)
+    write_po(lang)
   end
   
   def filename(lang)
-    "#{lang}.rb"
+    "#{lang}.po"
   end
   
   def read_po(fn)
     ret = {}
     in_translation_dir do
-      File.read(fn).split(/\n{2,}/m).each{|s|
-        s =~ /msgid\s+(.+)msgstr\s+(.+)/m
-	ret[$1.strip] = $2.strip
+      File.read(fn).split(/(?:\n\n)|(?:\n \n)/m).each{|s|
+        s =~ /msgid\s+(.+)msgstr\s+(.*)/m
+        str = $2.strip
+        ret[$1.strip] = str.empty? ? nil : str
       }
     end
     ret
@@ -71,9 +72,8 @@ class I18nService
     if @lang and @lang.kind_of?(String) then
       fn = TRANS_DIR + "/" + filename(@lang)
       begin
-        # @table = read_po(fn)
-        Kernel::load(fn)
-      rescue LoadError
+        @table = read_po(fn)
+      rescue Errno::ENOENT
         loaded = false
       end
     else
@@ -82,13 +82,17 @@ class I18nService
     loaded
   end
     
-  def save_table(lang)
+  def write_po(lang)
+    fname = filename(lang)
     in_translation_dir do
-      FileUtils.cp(filename(lang), "#{filename(lang)}.bak") if test(?f, filename(lang))
-      File.open(filename(lang), File::CREAT|File::WRONLY|File::TRUNC){|f|
-        f << @table.format_for_translation   
+      FileUtils.cp(fname, "#{fname}.bak") if test(?f, fname)
+      File.open(fname, File::CREAT|File::WRONLY|File::TRUNC){|f|
+        f << @table.po_format   
       }
     end
   end
+
 end
-  
+
+
+
