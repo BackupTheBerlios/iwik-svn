@@ -1,8 +1,14 @@
 msgid "Road"
 msgstr "Route"
 
+msgid "Orphaned pages removed"
+msgstr "Pages orphelines effacées"
+
 msgid "co- or authored:"
 msgstr "co- ou auteur de :"
+
+msgid "Created"
+msgstr "Créé"
 
 msgid "Textile formatting tips"
 msgstr "Astuces de formatage Textile"
@@ -13,8 +19,14 @@ msgstr "Recherche"
 msgid "Submit"
 msgstr "Envoyer"
 
+msgid "#{@actioned} on #{@page.pretty_created_at} by #{@auth_link}"
+msgstr "#{@actioned} le #{@page.pretty_created_at} par #{@auth_link}"
+
 msgid "Print"
 msgstr "Imprimer"
+
+msgid "category #{@category}"
+msgstr "la catégorie #{@category}"
 
 msgid "Edit"
 msgstr "Édition"
@@ -40,6 +52,9 @@ msgstr "Voir les modifications"
 msgid "Orphaned Pages"
 msgstr "Pages orphelines"
 
+msgid "Revised"
+msgstr "Modifié"
+
 msgid "Hide changes"
 msgstr "Cacher les modifications"
 
@@ -55,11 +70,14 @@ msgstr ""
 msgid "#{@interpolation} test"
 msgstr ""
 
+msgid "Editing"
+msgstr "Édition de"
+
+msgid "Creating"
+msgstr "Création de"
+
 msgid "untranslated"
 msgstr ""
-
-msgid "category #{@category}"
-msgstr "la catégorie #{@category}"
 
 msgid "Cancel"
 msgstr "Annuler"

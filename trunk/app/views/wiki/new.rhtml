@@ -1,5 +1,5 @@
 <% 
-  @title = "Creating #{WikiWords.separate(CGI.unescape(@page_name))}"
+  @title = _('Creating') + "#{WikiWords.separate(CGI.unescape(@page_name))}"
   @content_width = 720
   @hide_navigation = true
 %>
