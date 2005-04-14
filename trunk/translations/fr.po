@@ -1,0 +1,111 @@
+msgid "Road"
+msgstr "Route"
+
+msgid "co- or authored:"
+msgstr "co- ou auteur de :"
+
+msgid "Textile formatting tips"
+msgstr "Astuces de formatage Textile"
+
+msgid "Search"
+msgstr "Recherche"
+
+msgid "Submit"
+msgstr "Envoyer"
+
+msgid "Print"
+msgstr "Imprimer"
+
+msgid "Edit"
+msgstr "Édition"
+
+msgid "All pages in #{@set_name} listed alphabetically"
+msgstr "Toutes les pages dans #{@set_name} par ordre alphabétique"
+
+msgid "Summer"
+msgstr "Été"
+
+msgid "summer"
+msgstr "été"
+
+msgid "blue"
+msgstr "bleu"
+
+msgid "unlocks page"
+msgstr "déverrouille la page"
+
+msgid "See changes"
+msgstr "Voir les modifications"
+
+msgid "Orphaned Pages"
+msgstr "Pages orphelines"
+
+msgid "Hide changes"
+msgstr "Cacher les modifications"
+
+msgid "Home Page"
+msgstr "Accueil"
+
+msgid "Cooking test"
+msgstr "Test de cuisson"
+
+msgid "red"
+msgstr ""
+
+msgid "#{@interpolation} test"
+msgstr ""
+
+msgid "untranslated"
+msgstr ""
+
+msgid "category #{@category}"
+msgstr "la catégorie #{@category}"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Back in time"
+msgstr "Version précédente"
+
+msgid "Edit Web"
+msgstr "Configuration"
+
+msgid "Pages in #{@set_name} that no other page reference"
+msgstr "Pages dans #{@set_name} qui ne sont pas référencées par d'autres pages"
+
+msgid "wanted by"
+msgstr "recherchée par"
+
+msgid "Wanted Pages"
+msgstr "Pages manquantes"
+
+msgid "Authors"
+msgstr "Auteurs"
+
+msgid "Test String"
+msgstr "Chaîne de Test"
+
+msgid "the web"
+msgstr "le web"
+
+msgid "Edit Page"
+msgstr "Édition"
+
+msgid "Export"
+msgstr "Exporter"
+
+msgid "Recently Revised"
+msgstr "Modifications récentes"
+
+msgid "All Pages"
+msgstr "Toutes les pages"
+
+msgid "AnonymousCoward"
+msgstr "PaysanAnonyme"
+
+msgid "Unexisting pages that other pages in #{@set_name} reference"
+msgstr "Pages non-existantes dans #{@set_name} référencées par d'autres pages "
+
+msgid "Feeds"
+msgstr "Feeds"
+
