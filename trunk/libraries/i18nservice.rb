@@ -6,7 +6,7 @@ class I18nService
   attr_accessor :lang
   attr_accessor :table
   
-  MSG_PATTERN = /_\('(.+?)'\)/m
+  MSG_PATTERN = /_i?\('(.+?)'\)/m
   TRANS_DIR = File.dirname(__FILE__) + '/../translations'
   FILE_PATTERN = "??.po"
 

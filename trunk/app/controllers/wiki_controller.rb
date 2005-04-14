@@ -43,7 +43,7 @@ class WikiController < ApplicationController
   def remove_orphaned_pages
     if wiki.authenticate(@params['system_password_orphaned'])
       @web.wiki.remove_orphaned_pages(@web_name)
-      flash[:info] = 'Orphaned pages removed'
+      flash[:info] = _('Orphaned pages removed')
       redirect_to :controller => 'wiki', :web => @web_name, :action => 'list'
     else
       flash[:error] = password_error(@params['system_password'])
@@ -289,10 +289,10 @@ class WikiController < ApplicationController
     @category = @params['category']
     if @categories.include?(@category)
       @pages_in_category = @web.select { |page| page.in_category?(@category) }
-      @set_name = "category '#{@category}'"
+      @set_name = _i('category #{@category}')
     else 
       @pages_in_category = PageSet.new(@web).by_name
-      @set_name = 'the web'
+      @set_name = _('the web')
     end
     @category_links = @categories.map { |c| 
       if @category == c

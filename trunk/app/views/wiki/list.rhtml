@@ -11,8 +11,8 @@
 <div id="allPages" style="float: left; width: 280px; margin-right: 30px">
 <% unless @pages_that_are_orphaned.empty? && @page_names_that_are_wanted.empty? %>
   <h2>
-    All Pages
-    <br/><small style="font-size: 12px"><i>All pages in <%= @set_name %> listed alphabetically</i></small>
+    <%= _('All Pages') %>
+    <br/><small style="font-size: 12px"><i><%= _i('All pages in #{@set_name} listed alphabetically') %> </i></small>
   </h2>
 <% end %>
 
@@ -35,7 +35,7 @@
     <%= _('Wanted Pages') %>
     <br/>
     <small style="font-size: 12px">
-      <i><%= _("Unexisting pages that other pages in #{@set_name} reference") %></i>
+      <i><%= _i('Unexisting pages that other pages in #{@set_name} reference') %></i>
     </small>
   </h2>
 
@@ -55,8 +55,8 @@
 
 <% unless @pages_that_are_orphaned.empty? %>
   <h2>
-    Orphaned Pages
-    <br/><small style="font-size: 12px"><i>Pages in <%= @set_name %> that no other page reference</i></small>
+    <%=_('Orphaned Pages') %>
+    <br/><small style="font-size: 12px"><i><%= _i('Pages in #{@set_name} that no other page reference') %></i></small>
   </h2>
 
   <ul style="margin-bottom: 35px">
