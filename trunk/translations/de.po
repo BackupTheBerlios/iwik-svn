@@ -7,6 +7,12 @@ msgstr ""
 msgid "co- or authored:"
 msgstr "Co- or Autor von:"
 
+msgid "Based on"
+msgstr ""
+
+msgid "See current"
+msgstr ""
+
 msgid "Created"
 msgstr ""
 
@@ -28,6 +34,9 @@ msgstr "Drucken"
 msgid "category #{@category}"
 msgstr ""
 
+msgid "Views"
+msgstr ""
+
 msgid "Edit"
 msgstr "Editieren"
 
@@ -44,6 +53,9 @@ msgid "blue"
 msgstr ""
 
 msgid "unlocks page"
+msgstr ""
+
+msgid "Rollback"
 msgstr ""
 
 msgid "See changes"
@@ -73,6 +85,15 @@ msgstr ""
 msgid "Editing"
 msgstr ""
 
+msgid "Forward in time"
+msgstr ""
+
+msgid "Revision from #{@revision.pretty_created_at} by"
+msgstr ""
+
+msgid "Linked from"
+msgstr ""
+
 msgid "Creating"
 msgstr ""
 
@@ -80,6 +101,9 @@ msgid "category \'#{@category}\'"
 msgstr ""
 
 msgid "untranslated"
+msgstr ""
+
+msgid "Powered by"
 msgstr ""
 
 msgid "Cancel"
@@ -107,6 +131,9 @@ msgid "Test String"
 msgstr "Test Textfolge"
 
 msgid "the web"
+msgstr ""
+
+msgid "This site is running on"
 msgstr ""
 
 msgid "Edit Page"

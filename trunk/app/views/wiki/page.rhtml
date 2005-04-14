@@ -63,8 +63,8 @@
   <% end %>
 
   <small>
-    | Views: 
-    <%= link_to(_('Print'),
+    | <%= _('Views') + ': ' + 
+      link_to(_('Print'),
           {:web => @web.address, :action => 'print', :id => @page.name},
           {:accesskey => 'p'}) %>
   <% if defined? RedClothForTex and RedClothForTex.available? and @web.markup == :textile %>
@@ -77,8 +77,8 @@
 
   <% if @page.linked_from.length > 0 %>
     <small>
-      | Linked from: 
-      <%= @page.linked_from.collect { |referring_page| 
+      | <%= _('Linked from') +  ': ' +
+       @page.linked_from.collect { |referring_page| 
             link_to_existing_page referring_page
           }.join(", ")
       %>

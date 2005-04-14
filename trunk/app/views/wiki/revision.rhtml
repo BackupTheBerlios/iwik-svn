@@ -17,7 +17,7 @@
 
 
 <div class="byline">
-  <%= "Revision from #{@revision.pretty_created_at} by" %>
+  <%= _i('Revision from #{@revision.pretty_created_at} by') %>
   <%= link_to_page @revision.author %>
 </div>
 
@@ -25,13 +25,13 @@
 
   <% if @revision.next_revision %>
     <% if @revision.next_revision.number < (@page.revisions.length - 1) %>
-      <%= link_to('Forward in time',
+      <%= link_to(_('Forward in time'),
               {:web => @web.address, :action => 'revision', :id => @page.name, 
                :rev => @revision.next_revision.number},
               {:class => 'navlink'})
       %>
     <% else %>
-      <%= link_to('Forward in time',
+      <%= link_to(_('Forward in time'),
               {:web => @web.address, :action => 'show', :id => @page.name},
               {:class => 'navlink'})
       %>
@@ -44,7 +44,7 @@
   <% end %>
 
   <% if @revision.previous_revision %>
-    <%= link_to('Back in time',
+    <%= link_to(_('Back in time'),
           {:web => @web.address, :action => 'revision', :id => @page.name, 
            :rev => @revision.previous_revision.number},
           {:class => 'navlink'})
@@ -53,7 +53,7 @@
   <% end %>
 
   | 
-  <%= link_to('See current', {:web => @web.address, :action => 'show', :id => @page.name},
+  <%= link_to(_('See current'), {:web => @web.address, :action => 'show', :id => @page.name},
           {:class => 'navlink'})
   %>
 
@@ -68,7 +68,7 @@
 
   | 
   
-  <%= link_to('Rollback', 
+  <%= link_to(_('Rollback'), 
         {:web => @web.address, :action => 'rollback', :id => @page.name, :rev => @revision.number},
         {:class => 'navlink'})
   %>

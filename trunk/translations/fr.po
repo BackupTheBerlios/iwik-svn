@@ -7,6 +7,12 @@ msgstr "Pages orphelines effacées"
 msgid "co- or authored:"
 msgstr "co- ou auteur de :"
 
+msgid "Based on"
+msgstr "Basé sur"
+
+msgid "See current"
+msgstr "Version actuelle"
+
 msgid "Created"
 msgstr "Créé"
 
@@ -28,6 +34,9 @@ msgstr "Imprimer"
 msgid "category #{@category}"
 msgstr "la catégorie #{@category}"
 
+msgid "Views"
+msgstr "Vues"
+
 msgid "Edit"
 msgstr "Édition"
 
@@ -45,6 +54,9 @@ msgstr "bleu"
 
 msgid "unlocks page"
 msgstr "déverrouille la page"
+
+msgid "Rollback"
+msgstr ""
 
 msgid "See changes"
 msgstr "Voir les modifications"
@@ -73,10 +85,25 @@ msgstr ""
 msgid "Editing"
 msgstr "Édition de"
 
+msgid "Forward in time"
+msgstr "Avancer"
+
+msgid "Revision from #{@revision.pretty_created_at} by"
+msgstr "Version de #{@revision.pretty_created_at} par"
+
+msgid "Linked from"
+msgstr "Lié depuis"
+
 msgid "Creating"
 msgstr "Création de"
 
+msgid "category \'#{@category}\'"
+msgstr ""
+
 msgid "untranslated"
+msgstr ""
+
+msgid "Powered by"
 msgstr ""
 
 msgid "Cancel"
@@ -105,6 +132,9 @@ msgstr "Chaîne de Test"
 
 msgid "the web"
 msgstr "le web"
+
+msgid "This site is running on"
+msgstr "Ce site utilise"
 
 msgid "Edit Page"
 msgstr "Édition"
