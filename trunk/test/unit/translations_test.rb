@@ -15,6 +15,10 @@ class StringInterpolateTest < Test::Unit::TestCase
     @color = 'red'
     string = 'the horse is #{@color}'
     assert_equal 'the horse is red', string.interpolate(binding)
+    
+    @color = 'blue'
+    assert_equal 'the horse is blue', string.interpolate(binding)
+   
   end
 end
 
@@ -34,6 +38,9 @@ def interp_setup
 
 msgid "#{@interpolation} test"
 msgstr "test #{@interpolation}"
+ 
+msgid "blue"
+msgstr "bleu"    
 
 END_POI
 
@@ -57,6 +64,9 @@ msgstr "salut"
 msgid "two"
 msgstr "deux"    
  
+msgid "blue"
+msgstr "bleu"    
+ 
 msgid "untranslated"
 msgstr ""
 
@@ -79,15 +89,16 @@ END_PO
   end
   
   def test_load
-    assert_equal({'hello' => 'salut', 'two' => 'deux', 
+    assert_equal({'hello' => 'salut', 'two' => 'deux', 'blue' => 'bleu', 
                   'untranslated' => nil }, I18N.read_po('iotest'))
   end
 
   def test_interp
-    assert_equal({'#{@interpolation} test' => 'test #{@interpolation}'}, I18N.read_po('iotest_interp.po'))
+    assert_equal({'#{@interpolation} test' => 'test #{@interpolation}',
+                 'blue' => 'bleu'}, I18N.read_po('iotest_interp.po'))
   end
   
-    
+ 
 end
 
 class TranslationTest < Test::Unit::TestCase
@@ -108,16 +119,32 @@ class TranslationTest < Test::Unit::TestCase
     interp_teardown
   end
   
-  def test_interp
+  def test_interp_simple
     I18N.lang = 'iotest_interp'
     @interpolation = 'toto'
-    assert_equal('test toto', _('#{@interpolation} test') )
+    assert_equal('test toto', _i('#{@interpolation} test') )
     
     @interpolation = 'tutu'
-    assert_equal('test tutu', _('#{@interpolation} test') )
+    assert_equal('test tutu', _i('#{@interpolation} test') )
     
   end
-  
+
+   def test_interp
+    I18N.lang = 'iotest_interp'
+    assert_equal({'#{@interpolation} test' => 'test #{@interpolation}',
+                 'blue' => 'bleu'}, I18N.table)
+    assert_equal('bleu', _('blue'))
+    assert_equal('red', _('red'))
+    
+    @interpolation = _('blue')
+    assert_equal('test bleu', _i('#{@interpolation} test') )
+    
+    @interpolation = _('red')
+    assert_equal('test red', _i('#{@interpolation} test') )
+    
+  end
+ 
+    
   def test_default_is_english
     assert_equal('Test String', _('Test String'))
   end
