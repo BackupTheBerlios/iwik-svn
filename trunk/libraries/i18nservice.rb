@@ -5,9 +5,10 @@ class I18nService
   include Singleton
   attr_accessor :lang
   attr_accessor :table
+  
   MSG_PATTERN = /_\('(.+?)'\)/m
   TRANS_DIR = File.dirname(__FILE__) + '/../translations'
-  FILE_PATTERN = "??.rb"
+  FILE_PATTERN = "??.po"
 
   def lang=(l)
     unless ( @lang == l ) 

@@ -6,6 +6,19 @@ require 'i18nservice'
 
 I18N = I18nService.instance
 
+class StringInterpolateTest < Test::Unit::TestCase
+  def test_unchanged
+    string = 'blah'
+    assert_equal string, string.interpolate(binding)
+  end
+  def test_simple
+    @color = 'red'
+    string = 'the horse is #{@color}'
+    assert_equal 'the horse is red', string.interpolate(binding)
+  end
+end
+
+
 class GettextTest < Test::Unit::TestCase
   def test_available
     wd = Dir.getwd
@@ -14,6 +27,24 @@ class GettextTest < Test::Unit::TestCase
     # check that workdir is not changed
     assert_equal(wd, Dir.getwd)
   end
+end
+
+def interp_setup
+    poi = <<'END_POI'
+
+msgid "#{@interpolation} test"
+msgstr "test #{@interpolation}"
+
+END_POI
+
+    I18N.in_translation_dir do
+      File.open('iotest_interp.po',
+                 File::CREAT|File::WRONLY|File::TRUNC){|f|  f << poi   }
+    end
+end
+
+def interp_teardown
+  File.delete('iotest_interp.po') if test(?f, 'iotest_interp.po')
 end
 
 class TranslationIOTest < Test::Unit::TestCase
@@ -28,30 +59,41 @@ msgstr "deux"
  
 msgid "untranslated"
 msgstr ""
-  
+
 END_PO
+
     I18N.in_translation_dir do
-      File.open('iotest',
-                 File::CREAT|File::WRONLY|File::TRUNC){|f|  f << po   }
+      File.open('iotest', File::CREAT|File::WRONLY|File::TRUNC){|f|  
+                f << po   
+      }
     end
+    interp_setup
+    
   end
 
   def teardown
     I18N.in_translation_dir do
       File.delete('iotest') if test(?f, 'iotest')
     end
+    interp_teardown
   end
   
   def test_load
     assert_equal({'hello' => 'salut', 'two' => 'deux', 
-                  'untranslated' => nil}, I18N.read_po('iotest'))
+                  'untranslated' => nil }, I18N.read_po('iotest'))
+  end
+
+  def test_interp
+    assert_equal({'#{@interpolation} test' => 'test #{@interpolation}'}, I18N.read_po('iotest_interp.po'))
   end
   
+    
 end
 
 class TranslationTest < Test::Unit::TestCase
   # reset to default
   def setup
+    interp_setup
     I18N.lang='xx'
     I18N.table = {'blue' => 'bleu', 'summer' => 'été', 'untranslated' => nil}
     I18N.write_po('xx')
@@ -63,6 +105,17 @@ class TranslationTest < Test::Unit::TestCase
     I18N.in_translation_dir do
       File.delete(I18N.filename('xx')) if test(?f, I18N.filename('xx'))
     end
+    interp_teardown
+  end
+  
+  def test_interp
+    I18N.lang = 'iotest_interp'
+    @interpolation = 'toto'
+    assert_equal('test toto', _('#{@interpolation} test') )
+    
+    @interpolation = 'tutu'
+    assert_equal('test tutu', _('#{@interpolation} test') )
+    
   end
   
   def test_default_is_english

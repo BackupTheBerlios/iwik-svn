@@ -4,8 +4,9 @@ require 'i18nservice'
 
 i18n = I18nService.instance
 
-def _(string)
-  I18nService.instance.table.fetch(string, string) or string
+def _(string, b = self.getBinding)
+  ret = I18nService.instance.table.fetch(string, string) || string
+  ret.interpolate(b)
 end
 
 unless i18n.try_load

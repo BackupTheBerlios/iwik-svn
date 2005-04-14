@@ -32,10 +32,10 @@
 <div style="float: left; width: 280px">
 <% unless @page_names_that_are_wanted.empty? %>
   <h2>
-    Wanted Pages
+    <%= _('Wanted Pages') %>
     <br/>
     <small style="font-size: 12px">
-      <i>Unexisting pages that other pages in <%= @set_name %> reference</i>
+      <i><%= _("Unexisting pages that other pages in #{@set_name} reference") %></i>
     </small>
   </h2>
 
@@ -43,7 +43,7 @@
   <% @page_names_that_are_wanted.each do |wanted_page_name| %>
     <li>
       <%= link_to_page(wanted_page_name, @web, truncate(WikiWords.separate(wanted_page_name), 35)) %>
-      wanted by
+      <%= _('wanted by') %>
       <%= @web.select.pages_that_reference(wanted_page_name).collect { |referring_page|
             link_to_existing_page referring_page
           }.join(", ") 
