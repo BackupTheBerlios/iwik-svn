@@ -29,13 +29,10 @@
   <% if @page.name == "HomePage" %>
     <%= link_to(_('Edit Page'), 
           {:web => @web.address, :action => 'edit', :id => @page.name}, 
-          {:class => 'navlink', :accesskey => 'E'})
-    %>
-    | 
-    <%= link_to(_('Edit Web'), 
+          {:class => 'navlink', :accesskey => 'E'}) +
+     ' | ' + link_to(_('Edit Web'), 
             {:web => @web.address, :action => 'edit_web'}, 
-            {:class => 'navlink'})
-    %>
+            {:class => 'navlink'}) %>
   <% else %>
     <%= link_to(_('Edit'), 
           {:web => @web.address, :action => 'edit', :id => @page.name}, 
@@ -43,9 +40,7 @@
     %>
   <% end %>
 
-  <% if @page.revisions.length > 1 %>
-    | 
-    <%= link_to(_('Back in time'), 
+  <% if @page.revisions.length > 1 %> | <%= link_to(_('Back in time'), 
           {:web => @web.address, :action => 'revision', :id => @page.name, 
            :rev => @page.revisions.length - 2},
           {:class => 'navlink', :accesskey => 'R'})
@@ -58,10 +53,9 @@
       | <a href="#" onClick="toggleChanges(); return false;"><%= _('See changes') %></a>
     </span>
     <span id="hide_changes" style="display: none">
-      | <a href="#" onClick="toggleChanges(); return false;"><%=_('Hide changes')%></a>
+      | <a href="#" onClick="toggleChanges(); return false;"><%= _('Hide changes') %></a>
     </span>
   <% end %>
-
   <small>
     | <%= _('Views') + ': ' + 
       link_to(_('Print'),
@@ -76,12 +70,10 @@
   </small>
 
   <% if @page.linked_from.length > 0 %>
-    <small>
-      | <%= _('Linked from') +  ': ' +
+    <small> <%= ' | ' + _('Linked from') +  ': ' +
        @page.linked_from.collect { |referring_page| 
             link_to_existing_page referring_page
-          }.join(", ")
-      %>
+          }.join(", ")  %>
     </small>
   <% end %>
 
