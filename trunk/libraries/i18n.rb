@@ -5,7 +5,7 @@ require 'i18nservice'
 i18n = I18nService.instance
 
 def _(string)
-  ret = I18nService.instance.table.fetch(string, string) || string
+  I18nService.instance.table.fetch(string, string) || string
 end
 
 def _i(string, b = self.getBinding)

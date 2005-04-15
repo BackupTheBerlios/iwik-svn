@@ -24,7 +24,8 @@ unless defined? ADDITIONAL_LOAD_PATHS
     app/controllers
     app/helpers
     config
-    libraries
+    lib
+    lib/ri18n
   ).map { |dir| "#{File.expand_path(File.join(RAILS_ROOT, dir))}" }
 
 # Third party vendors
