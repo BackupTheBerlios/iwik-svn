@@ -7,7 +7,7 @@ class I18nService
   attr_accessor :table
   
   MSG_PATTERN = /_i?\('(.+?)'\)/m
-  TRANS_DIR = File.dirname(__FILE__) + '/../translations'
+  TRANS_DIR = File.dirname(__FILE__) + '/../../translations'
   FILE_PATTERN = "??.po"
 
   def lang=(l)
