@@ -113,8 +113,9 @@
 <br/>
 <h1>Other administrative tasks</h1>
 
-<form action="remove_orphaned_pages" id="remove_orphaned_pages" method="post" 
-      onSubmit="return checkSystemPassword(document.getElementById('system_password_orphaned').value)">
+<%= form_tag({:controller => 'admin', :web => @web.address, :action => 'remove_orphaned_pages'},
+{:id => 'remove_orphaned_pages', :onSubmit => "return checkSystemPassword(document.getElementById('system_password_orphaned').value)"
+}) %>
   <p align="right">
     <small>
       Clean up by entering system password
@@ -123,7 +124,8 @@
       <input type="submit" value="Delete Orphan Pages" />
     </small>
   </p>
-</form>
+<%= end_form_tag %>
+
 
 <script type="text/javascript" src="/javascripts/edit_web.js" />
 <script type="text/javascript">overrideAutocomplete()</script>
