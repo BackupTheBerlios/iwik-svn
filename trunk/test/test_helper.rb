@@ -3,7 +3,6 @@ require File.dirname(__FILE__) + '/../config/environment'
 require 'application'
 require 'test/unit'
 require 'action_controller/test_process'
-require 'i18n'
 
 # Uncomment this variable to have assert_success check that response bodies are valid XML
 $validate_xml_in_assert_success = true

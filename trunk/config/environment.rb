@@ -25,7 +25,6 @@ unless defined? ADDITIONAL_LOAD_PATHS
     app/helpers
     config
     lib
-    lib/ri18n
   ).map { |dir| "#{File.expand_path(File.join(RAILS_ROOT, dir))}" }
 
 # Third party vendors
@@ -37,6 +36,7 @@ unless defined? ADDITIONAL_LOAD_PATHS
     vendor/actionpack/lib
     vendor/activesupport/lib
     vendor/railties/lib
+    vendor/ri18n-0.0.1/lib
   ).map { |dir| 
     "#{File.expand_path(File.join(RAILS_ROOT, dir))}" 
   }.delete_if { |dir| not File.exist?(dir) }
@@ -49,6 +49,9 @@ require 'action_controller'
 require 'active_record_stub'
 require 'instiki_errors'
 require 'routes'
+require 'i18nservice'
+
+I18nService.instance.po_dir = "#{RAILS_ROOT}/translations"
 
 unless defined? RAILS_DEFAULT_LOGGER
   RAILS_DEFAULT_LOGGER = Logger.new(STDERR)

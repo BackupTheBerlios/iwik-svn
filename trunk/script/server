@@ -73,7 +73,6 @@ WikiService.storage_path = storage_path
 
 require 'i18nservice'
 I18nService.instance.lang = OPTIONS[:lang]
-require 'i18n'
 
 
 if  defined? INSTIKI_BATCH_JOB
