@@ -1,0 +1,14 @@
+msgid "I talk like a duck"
+msgstr ""
+
+msgid "I walk like a duck"
+msgstr ""
+
+msgid "Quack Quack !!"
+msgstr ""
+
+msgid "I ate %i worm"
+msgid_plural "I ate %i worms"
+msgstr[0] ""
+msgstr[1] ""
+

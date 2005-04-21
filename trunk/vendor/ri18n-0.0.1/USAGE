@@ -1,0 +1,9 @@
+=== DRAFT
+* Install ri18n (see INSTALL)
+* populate your source code with translator functions call
+* run the 'rake gettext' task
+* copy the template file 'en.pot' to 'your_lang_code.po'
+* translate the messages in the po file 
+* add an option to your program for setting language (see example)
+* run you app
+
