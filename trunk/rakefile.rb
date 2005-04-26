@@ -75,10 +75,11 @@ task :stats do
   ).to_s
 end
 
-
-desc "Collect text to translate"
+desc "Collect text to translate and update translation catalogs"
 task :gettext do
-  fl = I18nFileList['[A-Z]*', 'iwik', 'app/**/*', 'test/unit/translations_test.rb']
-# fl.write_template
-  fl.update
+  fl = I18nFileList['[A-Z]*', 'iwik', 'app/**/*']
+   msg_list = fl.gettext
+   I18nService.instance.write_pot(msg_list)
+   I18nService.instance.update_catalogs(msg_list)
 end
+

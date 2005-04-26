@@ -21,7 +21,7 @@
   <%= "(#{@page.author.ip})" if @page.author.respond_to?(:ip) %>
   <% if @web.count_pages %>
     <% total_chars = @page.content.length %>
-    (<%= total_chars %> characters / <%= sprintf("%-.1f", (total_chars / 2275 rescue 0)) %> pages)
+    (<%= n_('%i character', '%i characters', total_chars) %>/ <%= sprintf("%-.1f", (total_chars / 2275 rescue 0)) %> pages)
   <% end %>
 </div>
 
@@ -79,10 +79,9 @@
 
   <% if @page.included_from.length > 0 %>
     <small>
-      | Included from: <%= @page.included_from.collect { |referring_page|
+      | <%= _('Included from') + ': ' +  @page.included_from.collect { |referring_page|
 	 link_to_existing_page referring_page
-	}.join(", ") 
-	%>
+	}.join(", ") 	%>
     </small>
   <% end %>
 

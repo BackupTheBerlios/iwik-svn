@@ -1,159 +1,169 @@
-msgid "Road"
-msgstr "Route"
-
-msgid "Orphaned pages removed"
-msgstr "Pages orphelines effacées"
+msgid "%i char"
+msgid_plural "%i chars"
+msgstr[0] "%i caractère"
+msgstr[1] "%i caractères"
 
 msgid "co- or authored:"
 msgstr "co- ou auteur de :"
 
-msgid "Based on"
-msgstr "Basé sur"
+msgid "Orphaned pages removed"
+msgstr "Pages orphelines effacées"
 
-msgid "See current"
-msgstr "Version actuelle"
-
-msgid "Created"
-msgstr "Créé"
-
-msgid "Textile formatting tips"
-msgstr "Astuces de formatage Textile"
+msgid "Road"
+msgstr "Route"
 
 msgid "Search"
 msgstr "Recherche"
 
-msgid "Submit"
-msgstr "Envoyer"
+msgid "Textile formatting tips"
+msgstr "Astuces de formatage Textile"
 
-msgid "#{@actioned} on #{@page.pretty_created_at} by #{@auth_link}"
-msgstr "#{@actioned} le #{@page.pretty_created_at} par #{@auth_link}"
+msgid "Created"
+msgstr "Créé"
+
+msgid "See current"
+msgstr "Version actuelle"
+
+msgid "Based on"
+msgstr "Basé sur"
+
+msgid "%i character"
+msgid_plural "%i characters"
+msgstr[0] "%i caractère"
+msgstr[1] "%i caractères"
 
 msgid "Print"
 msgstr "Imprimer"
 
-msgid "category #{@category}"
-msgstr "la catégorie #{@category}"
+msgid "#{@actioned} on #{@page.pretty_created_at} by #{@auth_link}"
+msgstr "#{@actioned} le #{@page.pretty_created_at} par #{@auth_link}"
 
-msgid "Views"
-msgstr "Vues"
-
-msgid "Edit"
-msgstr "Édition"
+msgid "Submit"
+msgstr "Envoyer"
 
 msgid "All pages in #{@set_name} listed alphabetically"
 msgstr "Toutes les pages dans #{@set_name} par ordre alphabétique"
 
-msgid "Summer"
-msgstr "Été"
+msgid "Edit"
+msgstr "Édition"
 
-msgid "summer"
-msgstr "été"
+msgid "Views"
+msgstr "Vues"
 
-msgid "blue"
-msgstr "bleu"
+msgid "category #{@category}"
+msgstr "la catégorie #{@category}"
 
-msgid "unlocks page"
-msgstr "déverrouille la page"
-
-msgid "Rollback"
-msgstr ""
-
-msgid "See changes"
-msgstr "Voir les modifications"
+msgid "Included from"
+msgstr "Inclus depuis"
 
 msgid "Orphaned Pages"
 msgstr "Pages orphelines"
 
-msgid "Revised"
-msgstr "Modifié"
+msgid "See changes"
+msgstr "Voir les modifications"
 
-msgid "Hide changes"
-msgstr "Cacher les modifications"
+msgid "Rollback"
+msgstr "Restaure"
+
+msgid "unlocks page"
+msgstr "déverrouille la page"
+
+msgid "blue"
+msgstr "bleu"
+
+msgid "summer"
+msgstr "été"
+
+msgid "Summer"
+msgstr "Été"
+
+msgid "All content"
+msgstr "Total"
 
 msgid "Home Page"
 msgstr "Accueil"
 
-msgid "Cooking test"
-msgstr "Test de cuisson"
+msgid "Hide changes"
+msgstr "Cacher les modifications"
 
-msgid "red"
-msgstr ""
-
-msgid "#{@interpolation} test"
-msgstr ""
-
-msgid "Editing"
-msgstr "Édition de"
-
-msgid "Forward in time"
-msgstr "Avancer"
-
-msgid "Revision from #{@revision.pretty_created_at} by"
-msgstr "Version de #{@revision.pretty_created_at} par"
+msgid "Revised"
+msgstr "Modifié"
 
 msgid "Linked from"
 msgstr "Lié depuis"
 
+msgid "Revision from #{@revision.pretty_created_at} by"
+msgstr "Version de #{@revision.pretty_created_at} par"
+
+msgid "Forward in time"
+msgstr "Avancer"
+
+msgid "Editing"
+msgstr "Édition de"
+
+msgid "Cooking test"
+msgstr "Test de cuisson"
+
 msgid "Creating"
 msgstr "Création de"
-
-msgid "category \'#{@category}\'"
-msgstr ""
-
-msgid "untranslated"
-msgstr ""
-
-msgid "Powered by"
-msgstr ""
-
-msgid "Cancel"
-msgstr "Annuler"
-
-msgid "Back in time"
-msgstr "Version précédente"
-
-msgid "Edit Web"
-msgstr "Configuration"
-
-msgid "Pages in #{@set_name} that no other page reference"
-msgstr "Pages dans #{@set_name} qui ne sont pas référencées par d'autres pages"
-
-msgid "wanted by"
-msgstr "recherchée par"
-
-msgid "Wanted Pages"
-msgstr "Pages manquantes"
 
 msgid "Authors"
 msgstr "Auteurs"
 
-msgid "Test String"
-msgstr "Chaîne de Test"
+msgid "Wanted Pages"
+msgstr "Pages manquantes"
 
-msgid "the web"
-msgstr "le web"
+msgid "wanted by"
+msgstr "recherchée par"
 
-msgid "This site is running on"
-msgstr "Ce site utilise"
+msgid "Pages in #{@set_name} that no other page reference"
+msgstr "Pages dans #{@set_name} qui ne sont pas référencées par d'autres pages"
 
-msgid "Edit Page"
-msgstr "Édition"
+msgid "Edit Web"
+msgstr "Configuration"
 
-msgid "Export"
-msgstr "Exporter"
+msgid "Back in time"
+msgstr "Version précédente"
 
-msgid "Recently Revised"
-msgstr "Modifications récentes"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Powered by"
+msgstr ""
+
+msgid "category \'#{@category}\'"
+msgstr "categorie \'#{@category}\'"
 
 msgid "All Pages"
 msgstr "Toutes les pages"
 
-msgid "AnonymousCoward"
-msgstr "PaysanAnonyme"
+msgid "Recently Revised"
+msgstr "Modifications récentes"
+
+msgid "Export"
+msgstr "Exporter"
+
+msgid "Edit Page"
+msgstr "Édition"
+
+msgid "This site is running on"
+msgstr "Ce site utilise"
+
+msgid "the web"
+msgstr "le web"
+
+msgid "Test String"
+msgstr "Chaîne de Test"
+
+msgid "create a new web"
+msgstr "crée un nouveau web"
+
+msgid "Feeds"
+msgstr "Feeds"
 
 msgid "Unexisting pages that other pages in #{@set_name} reference"
 msgstr "Pages non-existantes dans #{@set_name} référencées par d'autres pages "
 
-msgid "Feeds"
-msgstr "Feeds"
+msgid "AnonymousCoward"
+msgstr "PaysanAnonyme"
 

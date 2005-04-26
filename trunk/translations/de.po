@@ -1,159 +1,178 @@
-msgid "Road"
-msgstr "Straße"
-
-msgid "Orphaned pages removed"
-msgstr ""
+msgid "%i char"
+msgid_plural "%i chars"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "co- or authored:"
 msgstr "Co- or Autor von:"
 
-msgid "Based on"
+msgid "Orphaned pages removed"
 msgstr ""
 
-msgid "See current"
+msgid "Road"
+msgstr "Straße"
+
+msgid "Search"
+msgstr "Suchen"
+
+msgid "Textile formatting tips"
 msgstr ""
 
 msgid "Created"
 msgstr ""
 
-msgid "Textile formatting tips"
+msgid "See current"
 msgstr ""
 
-msgid "Search"
-msgstr "Suchen"
-
-msgid "Submit"
+msgid "Based on"
 msgstr ""
 
-msgid "#{@actioned} on #{@page.pretty_created_at} by #{@auth_link}"
-msgstr ""
+msgid "%i character"
+msgid_plural "%i characters"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Print"
 msgstr "Drucken"
 
-msgid "category #{@category}"
+msgid "#{@actioned} on #{@page.pretty_created_at} by #{@auth_link}"
 msgstr ""
 
-msgid "Views"
+msgid "Submit"
+msgstr ""
+
+msgid "All pages in #{@set_name} listed alphabetically"
 msgstr ""
 
 msgid "Edit"
 msgstr "Editieren"
 
-msgid "All pages in #{@set_name} listed alphabetically"
+msgid "Views"
 msgstr ""
 
-msgid "Summer"
-msgstr "Sommer"
-
-msgid "summer"
-msgstr "Sommer"
-
-msgid "blue"
+msgid "category #{@category}"
 msgstr ""
 
-msgid "unlocks page"
+msgid "Included from"
 msgstr ""
 
-msgid "Rollback"
+msgid "Orphaned Pages"
 msgstr ""
 
 msgid "See changes"
 msgstr "Änderungen sehen"
 
-msgid "Orphaned Pages"
+msgid "Rollback"
 msgstr ""
 
-msgid "Revised"
+msgid "unlocks page"
 msgstr ""
 
-msgid "Hide changes"
-msgstr "Änderungen ausblenden"
+msgid "blue"
+msgstr ""
+
+msgid "summer"
+msgstr "Sommer"
+
+msgid "Summer"
+msgstr "Sommer"
+
+msgid "All content"
+msgstr ""
 
 msgid "Home Page"
 msgstr "Startseite"
 
-msgid "Cooking test"
-msgstr "Kochtest"
+msgid "Hide changes"
+msgstr "Änderungen ausblenden"
 
-msgid "red"
-msgstr ""
-
-msgid "#{@interpolation} test"
-msgstr ""
-
-msgid "Editing"
-msgstr ""
-
-msgid "Forward in time"
-msgstr ""
-
-msgid "Revision from #{@revision.pretty_created_at} by"
+msgid "Revised"
 msgstr ""
 
 msgid "Linked from"
 msgstr ""
 
+msgid "Revision from #{@revision.pretty_created_at} by"
+msgstr ""
+
+msgid "Forward in time"
+msgstr ""
+
+msgid "Editing"
+msgstr ""
+
+msgid "#{@interpolation} test"
+msgstr ""
+
+msgid "red"
+msgstr ""
+
+msgid "Cooking test"
+msgstr "Kochtest"
+
 msgid "Creating"
-msgstr ""
-
-msgid "category \'#{@category}\'"
-msgstr ""
-
-msgid "untranslated"
-msgstr ""
-
-msgid "Powered by"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
-msgid "Back in time"
-msgstr "Zurück"
-
-msgid "Edit Web"
-msgstr "Konfigurieren"
-
-msgid "Pages in #{@set_name} that no other page reference"
-msgstr ""
-
-msgid "wanted by"
-msgstr ""
-
-msgid "Wanted Pages"
 msgstr ""
 
 msgid "Authors"
 msgstr "Autoren"
 
-msgid "Test String"
-msgstr "Test Textfolge"
-
-msgid "the web"
+msgid "Wanted Pages"
 msgstr ""
 
-msgid "This site is running on"
+msgid "wanted by"
 msgstr ""
 
-msgid "Edit Page"
-msgstr "Seite Editieren"
+msgid "Pages in #{@set_name} that no other page reference"
+msgstr ""
 
-msgid "Export"
-msgstr "Exportieren"
+msgid "Edit Web"
+msgstr "Konfigurieren"
 
-msgid "Recently Revised"
+msgid "Back in time"
+msgstr "Zurück"
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Powered by"
+msgstr ""
+
+msgid "untranslated"
+msgstr ""
+
+msgid "category \'#{@category}\'"
 msgstr ""
 
 msgid "All Pages"
 msgstr "Alle Seiten"
 
-msgid "AnonymousCoward"
+msgid "Recently Revised"
 msgstr ""
 
-msgid "Unexisting pages that other pages in #{@set_name} reference"
+msgid "Export"
+msgstr "Exportieren"
+
+msgid "Edit Page"
+msgstr "Seite Editieren"
+
+msgid "This site is running on"
+msgstr ""
+
+msgid "the web"
+msgstr ""
+
+msgid "Test String"
+msgstr "Test Textfolge"
+
+msgid "create a new web"
 msgstr ""
 
 msgid "Feeds"
 msgstr "Feeds"
+
+msgid "Unexisting pages that other pages in #{@set_name} reference"
+msgstr ""
+
+msgid "AnonymousCoward"
+msgstr ""
 
